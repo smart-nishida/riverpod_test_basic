@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'state_notifier_provider_page_next.dart';
+import 'state_notifier_provider.dart';
 
-import 'counter_notifier.dart';
-
-final countNotifierProvider =
-    StateNotifierProvider<CounterNotifier, int>((ref) {
-  return CounterNotifier();
-});
+// final countNotifierProvider =
+//     StateNotifierProvider.autoDispose<CounterNotifier, int>((ref) {
+//   return CounterNotifier();
+// });
 
 class StateNotifierProviderPage extends ConsumerWidget {
   const StateNotifierProviderPage({super.key});
@@ -21,9 +21,16 @@ class StateNotifierProviderPage extends ConsumerWidget {
         title: const Text('StateNotifierProvider Sample'),
       ),
       body: Center(
-        child: Text(
-          count.toString(),
-          style: const TextStyle(fontSize: 24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              count.toString(),
+              style: const TextStyle(fontSize: 24),
+            ),
+            navigatorPushButton(context, const StateNotifierProviderPageNext(),
+                'StateNotifierProviderPageNext'),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -33,6 +40,17 @@ class StateNotifierProviderPage extends ConsumerWidget {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
+    );
+  }
+
+  Widget navigatorPushButton(
+      BuildContext context, Widget page, String pageName) {
+    return TextButton(
+      onPressed: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => page));
+      },
+      child: Text(pageName),
     );
   }
 }
