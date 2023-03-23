@@ -14,7 +14,7 @@ class ProviderPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Riverpod Sample'),
+        title: const Text('Provider Sample'),
       ),
       body: Center(
         child: Text(

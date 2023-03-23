@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'provider/provider_page.dart';
+import 'provider/state_notifier_provider_page/state_notifier_provider_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -32,16 +33,21 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const ProviderPage()));
-              },
-              child: const Text('ProviderPage'),
-            ),
+            navigatorPushButton(context, const ProviderPage(), 'ProviderPage'),
+            navigatorPushButton(context, const StateNotifierProviderPage(), 'StateNotifierProviderPage'),
           ],
         ),
       ),
+    );
+  }
+
+  Widget navigatorPushButton(BuildContext context, Widget page, String pageName) {
+    return TextButton(
+      onPressed: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => page));
+      },
+      child: Text(pageName),
     );
   }
 }
