@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'provider/provider_page/provider_page.dart';
 import 'provider/state_notifier_provider_page/state_notifier_provider_page.dart';
+import 'provider/stream_provider_page/stream_provider_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -35,6 +36,7 @@ class HomePage extends StatelessWidget {
           children: [
             navigatorPushButton(context, const ProviderPage(), 'ProviderPage'),
             navigatorPushButton(context, const StateNotifierProviderPage(), 'StateNotifierProviderPage'),
+            navigatorPushButton(context, const StreamProviderPage(), 'StreamProviderPage'),
           ],
         ),
       ),
